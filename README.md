@@ -39,10 +39,19 @@ A privacy-first email scam detection tool powered by a **locally running AI mode
 - **[Node.js](https://nodejs.org) 18+**
 - **[Ollama](https://ollama.com)** installed and running with a model pulled:
 
-```bash
-ollama serve
-ollama pull mistral
-```
+  **macOS:**
+  ```bash
+  brew install ollama
+  ```
+  Or download the Mac app directly from [ollama.com/download](https://ollama.com/download).
+
+  **Windows/Linux:** Download the installer from [ollama.com/download](https://ollama.com/download).
+
+  Then pull the model and start Ollama:
+  ```bash
+  ollama pull mistral
+  ollama serve
+  ```
 
 > You can swap `mistral` for any Ollama-compatible model by changing `OLLAMA_MODEL` in your `.env`.
 
@@ -53,7 +62,7 @@ ollama pull mistral
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/EmailScamAnalyzer.git
+git clone https://github.com/panhadoodleflunky/EmailScamAnalyzer.git
 cd EmailScamAnalyzer
 ```
 
