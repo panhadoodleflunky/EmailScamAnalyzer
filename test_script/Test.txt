@@ -1,0 +1,44 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                                Test case 1:
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+    Subject: URGENT: Your Microsoft 365 Account Will Be Suspended in 30 Minutes
+
+    Dear Saki,
+
+    We detected unusual login activity from Russia and your mailbox is now at high risk. 
+    For your security, your account will be permanently suspended within 30 minutes unless you verify immediately.
+
+    Verify now:
+    http://microsoft-security-check-verify-login.com/secure
+
+    If you do not verify, you may lose all emails, OneDrive files, and Teams access.
+
+    To avoid suspension, reply to this email with:
+    - Your corporate email password
+    - Your phone number for identity confirmation
+    - The 6-digit MFA code you receive
+
+    This is an automated security notice. Do not contact IT, as this process is handled by Microsoft Security directly.
+
+    Thank you,
+    Microsoft 365 Security Team
+
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                                Test case 2:
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+    Subject: Updated Meeting Time for Product Demo
+
+    Hi team,
+
+    The client requested moving tomorrow's product demo from 2:00 PM to 3:30 PM. 
+    Please review the attached agenda and add any discussion points by end of day.
+
+    Meeting link (same as calendar invite): https://teams.microsoft.com/l/meetup-join/...
+
+    Thanks,
+    Alicia
+    Product Manager
