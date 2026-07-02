@@ -16,6 +16,8 @@ type MainViewProps = {
   canAnalyse: boolean
   isLoading: boolean
   error: string | null
+  isDark: boolean
+  onToggleTheme: () => void
   onTextChange: (value: string) => void
   onSubmit: (event: FormEvent<HTMLFormElement>) => void
   onUseSample: () => void
@@ -35,6 +37,8 @@ export function MainView({
   canAnalyse,
   isLoading,
   error,
+  isDark,
+  onToggleTheme,
   onTextChange,
   onSubmit,
   onUseSample,
@@ -55,21 +59,32 @@ export function MainView({
           <span className="brand-name">{t('app.eyebrow')}</span>
         </div>
 
-        <label className="language-control" htmlFor="locale-select">
-          <span className="sr-only">{t('app.language')}</span>
-          <GlobeIcon />
-          <select
-            id="locale-select"
-            value={locale}
-            onChange={(event) => setLocale(event.target.value as typeof locale)}
+        <div className="topbar-controls">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={onToggleTheme}
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {availableLocales.map((availableLocale) => (
-              <option key={availableLocale} value={availableLocale}>
-                {availableLocale.toUpperCase()}
-              </option>
-            ))}
-          </select>
-        </label>
+            {isDark ? <SunIcon /> : <MoonIcon />}
+          </button>
+
+          <label className="language-control" htmlFor="locale-select">
+            <span className="sr-only">{t('app.language')}</span>
+            <GlobeIcon />
+            <select
+              id="locale-select"
+              value={locale}
+              onChange={(event) => setLocale(event.target.value as typeof locale)}
+            >
+              {availableLocales.map((availableLocale) => (
+                <option key={availableLocale} value={availableLocale}>
+                  {availableLocale.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       </header>
 
       <main className="page-main">
@@ -150,19 +165,32 @@ function ResultSkeleton() {
 
 function ShieldIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+      {/* Shield body */}
       <path
-        d="M12 3l7 3v5c0 4.4-3 8.2-7 9-4-0.8-7-4.6-7-9V6l7-3z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
+        d="M12 2.5L4 6v5.5c0 5.25 3.4 9.75 8 11 4.6-1.25 8-5.75 8-11V6l-8-3.5z"
+        fill="currentColor"
+        opacity="0.15"
       />
       <path
-        d="M9 12l2 2 4-4"
+        d="M12 2.5L4 6v5.5c0 5.25 3.4 9.75 8 11 4.6-1.25 8-5.75 8-11V6l-8-3.5z"
         stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
+        strokeWidth="1.5"
         strokeLinejoin="round"
+      />
+      {/* Radar/scan rings */}
+      <circle cx="12" cy="11" r="2" fill="currentColor" />
+      <path
+        d="M12 7.5a3.5 3.5 0 0 1 3.5 3.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+      />
+      <path
+        d="M12 5.5a5.5 5.5 0 0 1 5.5 5.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
       />
     </svg>
   )
@@ -186,6 +214,23 @@ function LockIcon() {
     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
       <rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" strokeWidth="1.7" />
       <path d="M8 11V8a4 4 0 118 0v3" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  )
+}
+
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
     </svg>
   )
 }

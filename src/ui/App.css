@@ -52,6 +52,7 @@
   display: grid;
   place-items: center;
   width: 34px;
+  min-width: 34px;
   height: 34px;
   border-radius: 10px;
   color: #fff;
@@ -85,6 +86,32 @@
   background: transparent;
   cursor: pointer;
   outline: none;
+}
+
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--brand);
+  border-color: var(--brand);
+  background: var(--brand-soft);
 }
 
 .sr-only {

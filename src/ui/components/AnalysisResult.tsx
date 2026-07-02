@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useI18n } from '../../localization/i18nContext'
 import {
   formatLikelihoodPercent,
@@ -61,7 +62,15 @@ function RiskGauge({ value, label }: { value: number; label: string }) {
   const radius = 54
   const circumference = 2 * Math.PI * radius
   const clamped = Math.max(0, Math.min(100, value))
-  const offset = circumference - (clamped / 100) * circumference
+  const targetOffset = circumference - (clamped / 100) * circumference
+
+  // Start empty, then animate to the target value after mount
+  const [animatedOffset, setAnimatedOffset] = useState(circumference)
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setAnimatedOffset(targetOffset))
+    return () => cancelAnimationFrame(frame)
+  }, [targetOffset])
 
   return (
     <div className="gauge" role="img" aria-label={`${label}`}>
@@ -83,7 +92,7 @@ function RiskGauge({ value, label }: { value: number; label: string }) {
           strokeWidth="12"
           strokeLinecap="round"
           strokeDasharray={circumference}
-          strokeDashoffset={offset}
+          strokeDashoffset={animatedOffset}
           transform="rotate(-90 65 65)"
         />
       </svg>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import './App.css'
 import { useI18n } from '../localization/i18nContext'
@@ -21,6 +21,15 @@ function App() {
   const [compareId, setCompareId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    return saved === 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+    localStorage.setItem('theme', isDark ? 'dark' : 'light')
+  }, [isDark])
 
   const canAnalyse = text.trim().length > 0 && !isLoading
 
@@ -123,6 +132,8 @@ function App() {
       canAnalyse={canAnalyse}
       isLoading={isLoading}
       error={error}
+      isDark={isDark}
+      onToggleTheme={() => setIsDark((d) => !d)}
       onTextChange={setText}
       onSubmit={onSubmit}
       onUseSample={useSampleEmail}
