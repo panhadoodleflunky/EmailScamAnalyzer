@@ -28,7 +28,7 @@ A privacy-first email scam detection tool powered by a **locally running AI mode
 |---|---|
 | Frontend | React 19, TypeScript, Vite |
 | Backend | Express 5, TypeScript, tsx |
-| AI | [Ollama](https://ollama.com) (local LLM, default: `mistral`) |
+| AI | [Ollama](https://ollama.com) (local LLM, default: `llama3.2:3b`) |
 | Validation | Zod |
 | Dev tooling | ESLint, Concurrently |
 
@@ -49,11 +49,11 @@ A privacy-first email scam detection tool powered by a **locally running AI mode
 
   Then pull the model and start Ollama:
   ```bash
-  ollama pull mistral
+  ollama pull llama3.2:3b
   ollama serve
   ```
 
-> You can swap `mistral` for any Ollama-compatible model by changing `OLLAMA_MODEL` in your `.env`.
+> You can swap `llama3.2:3b` for any Ollama-compatible model by changing `OLLAMA_MODEL` in your `.env`.
 
 ---
 
@@ -95,7 +95,7 @@ Then open [http://localhost:5173](http://localhost:5173) in your browser.
 | Variable | Default | Description |
 |---|---|---|
 | `OLLAMA_URL` | `http://localhost:11434` | Base URL of your Ollama instance |
-| `OLLAMA_MODEL` | `mistral` | Ollama model name to use for analysis |
+| `OLLAMA_MODEL` | `llama3.2:3b` | Ollama model name to use for analysis |
 | `PORT` | `8787` | Port the Express API server listens on |
 
 ---
